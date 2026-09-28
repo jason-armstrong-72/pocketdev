@@ -1,0 +1,14 @@
+{
+  "name": "pocketdev",
+  "description": "Open your local dev server on your phone.",
+  "owner": {
+    "name": "Jason Armstrong"
+  },
+  "plugins": [
+    {
+      "name": "pocketdev",
+      "source": "./",
+      "description": "Hands back a phone link (and QR code) beside every localhost link, and catches frameworks that refuse phones."
+    }
+  ]
+}

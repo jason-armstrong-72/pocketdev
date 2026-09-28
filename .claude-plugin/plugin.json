@@ -1,0 +1,10 @@
+{
+  "name": "pocketdev",
+  "description": "Hands back a phone link (and QR code) beside every localhost link, and catches frameworks that refuse phones.",
+  "version": "0.1.0",
+  "author": {
+    "name": "Jason Armstrong"
+  },
+  "repository": "https://github.com/jason-armstrong-72/pocketdev",
+  "license": "MIT"
+}
