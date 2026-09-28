@@ -1,0 +1,37 @@
+{
+  "name": "pocketdev",
+  "version": "0.1.0",
+  "description": "Open your local dev server on your phone: prints the LAN link and a QR code, and tells you when the framework will refuse the phone.",
+  "type": "module",
+  "bin": {
+    "pocketdev": "bin/pocketdev.js"
+  },
+  "files": [
+    "bin",
+    "src"
+  ],
+  "scripts": {
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "uqr": "^0.1.3"
+  },
+  "keywords": [
+    "dev-server",
+    "mobile",
+    "phone",
+    "lan",
+    "qr",
+    "nextjs",
+    "vite",
+    "claude-code"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jason-armstrong-72/pocketdev.git"
+  },
+  "license": "MIT"
+}
