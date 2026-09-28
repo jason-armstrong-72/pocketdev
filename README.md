@@ -27,6 +27,10 @@ npm i -g github:jason-armstrong-72/pocketdev
 Or run it without installing: `npx -y github:jason-armstrong-72/pocketdev`. Requires Node 18 or
 later. Works on macOS, Linux and Windows.
 
+If you use a Node version manager (nvm, fnm, volta and similar), a global install belongs to the
+Node version that was active when you installed it. Switch versions and `pocketdev` disappears
+until you install it again under the new one. The `npx` form works under any version.
+
 ## Use
 
 ```bash
