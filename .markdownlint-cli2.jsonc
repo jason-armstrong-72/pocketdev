@@ -2,13 +2,8 @@
   // Glob + ignore config for markdownlint-cli2 (rules live in .markdownlint.jsonc)
   "globs": ["**/*.md"],
 
-  // ⚠️ Every ignore that can nest is anchored with `**/`. An un-anchored
-  // "node_modules/**" matches ONLY the tree at the repo root, so the day a repo
-  // grows a second package — a workspace, a docs site, a sub-app — that package's
-  // dependencies start getting linted and the run fills with errors from files
-  // nobody here wrote. Hit 2026-08-28 in vaultia-tokens the moment a Next app was
-  // added at site/; aws_agent and lucys-luxury had already been corrected by hand.
-  // Transitive node_modules under the root one were always covered, which is why
-  // this stayed invisible for so long.
+  // Every ignore that can nest is anchored with `**/`. An un-anchored
+  // "node_modules/**" matches only the tree at the repo root, so a nested
+  // package's dependencies would get linted.
   "ignores": ["**/node_modules/**", "**/.next/**", "**/dist/**", "**/build/**"]
 }
