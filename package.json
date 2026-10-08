@@ -1,6 +1,6 @@
 {
   "name": "pocketdev",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Open your local dev server on your phone: prints the LAN link and a QR code, and tells you when the framework will refuse the phone.",
   "type": "module",
   "bin": {

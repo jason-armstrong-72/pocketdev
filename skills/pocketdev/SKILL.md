@@ -19,8 +19,7 @@ there isn't one.
 
 ```bash
 pocketdev --json --no-qr                    # if installed globally
-npx -y pocketdev --json --no-qr             # otherwise (npm)
-npx -y github:jason-armstrong-72/pocketdev --json --no-qr   # before it is on npm
+npx -y github:jason-armstrong-72/pocketdev --json --no-qr   # otherwise
 ```
 
 Pass the port if you know it (`pocketdev 3000 --json`), and `--path /some/route` to link straight
