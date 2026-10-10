@@ -16,6 +16,8 @@ Options
   --path <path>   append a path to the links, e.g. --path /settings
   --json          print machine-readable output (for scripts and agents)
   --no-qr         skip the QR code
+  --qr-name       put the .local link in the QR code instead of the IP link
+                  (falls back to the IP link when there is no .local name)
   --no-check      skip the check for frameworks that refuse phones
   -h, --help      show this help
 
@@ -23,12 +25,13 @@ The phone must be on the same Wi-Fi as this computer. Only use this on a
 network you trust: anyone on it can open the same link.`;
 
 function parseArgs(argv) {
-  const opts = { port: null, path: '', json: false, qr: true, check: true };
+  const opts = { port: null, path: '', json: false, qr: true, qrName: false, check: true };
   for (let i = 0; i < argv.length; i++) {
     const arg = argv[i];
     if (arg === '-h' || arg === '--help') opts.help = true;
     else if (arg === '--json') opts.json = true;
     else if (arg === '--no-qr') opts.qr = false;
+    else if (arg === '--qr-name') opts.qrName = true;
     else if (arg === '--no-check') opts.check = false;
     else if (arg === '--path') opts.path = argv[++i] ?? '';
     else if (/^\d+$/.test(arg)) opts.port = Number(arg);
@@ -45,6 +48,11 @@ const opts = parseArgs(process.argv.slice(2));
 if (opts.help) {
   console.log(HELP);
   process.exit(0);
+}
+
+// The link the QR code carries: the `.local` link when asked for and there is one, else the IP link.
+function qrLink(urls, preferName) {
+  return preferName && urls.name ? urls.name : urls.ip;
 }
 
 const addresses = lanAddresses();
@@ -118,11 +126,13 @@ for (const [i, r] of results.entries()) {
     console.log(warn(`  ! ${p.detail}`));
     console.log(`    Fix: ${p.fix}`);
   }
-  // One QR code, for the first reachable server. It encodes the IP link:
-  // every phone can open that, while `.local` names fail on some Android phones.
+  // One QR code, for the first reachable server. It encodes the IP link by default: every phone
+  // can open that, while `.local` names fail on some Android phones. --qr-name encodes the `.local`
+  // link instead, for logins that must outlive a change of network: a browser keeps cookies per
+  // address, and the IP is not stable.
   if (opts.qr && r.onLan && i === results.findIndex((x) => x.onLan)) {
     console.log('');
-    console.log(renderUnicodeCompact(r.urls.ip, { border: 1 }).replace(/^/gm, '  '));
+    console.log(renderUnicodeCompact(qrLink(r.urls, opts.qrName), { border: 1 }).replace(/^/gm, '  '));
     console.log(dim('  Scan with the phone camera. Same Wi-Fi as this computer.'));
   }
 }

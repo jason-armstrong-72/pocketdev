@@ -7,6 +7,15 @@ How a release happens: the pull request that changes the version adds its sectio
 merges, the merge commit is tagged `v<version>` and a GitHub Release is published with the same
 notes. Versions before 0.1.1 are not listed.
 
+## 0.1.2 (2026-10-11)
+
+### Added
+
+- `--qr-name` puts the `.local` link in the QR code instead of the IP link, falling back to the
+  IP link when the machine has no `.local` name. Use it when scanning logs a phone into something,
+  because a browser keeps that login per address, and the IP changes with the network. The default
+  is unchanged (#7).
+
 ## 0.1.1 (2026-10-09)
 
 ### Fixed

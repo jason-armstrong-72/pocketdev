@@ -38,6 +38,7 @@ pocketdev                      # find the dev server on the usual ports
 pocketdev 3000                 # a specific port
 pocketdev --path /settings     # link straight to a page
 pocketdev --json               # machine-readable, for scripts and agents
+pocketdev --qr-name            # QR code of the .local link, for logins that must survive a new IP
 ```
 
 Run it from your project folder, so it can tell which framework you use and give the right fix.
